@@ -1,26 +1,36 @@
 @import "tailwindcss";
 
+@theme {
+  --color-brand-cream: #F0F4F1; 
+  --color-brand-mint: #c6d8c9;
+  
+  /* Changed from Teal to Dark Charcoal Gray */
+  --color-brand-teal: #122029; 
+  
+  --color-brand-softTeal: #9aa89c;
+
+  --shadow-soft: 0 20px 40px -10px rgba(31, 41, 55, 0.08); /* Softened the shadow color to match the gray */
+  --shadow-inner-soft: inset 0 2px 4px 0 rgba(31, 41, 55, 0.05);
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  background-color: var(--color-brand-cream);
+  color: var(--color-brand-teal);
+  font-family: sans-serif; 
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .glass-card {
+    /* Pure white background with slight transparency for the blur */
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(16px);
+    /* A crisp white border gives it that "glass" edge */
+    border: 1px solid rgba(255, 255, 255, 1);
+    box-shadow: var(--shadow-soft);
+    border-radius: 1.5rem; 
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+body, input, select, textarea, button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
