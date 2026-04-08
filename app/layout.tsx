@@ -3,7 +3,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 
 export const metadata: Metadata = {
-  title: "Sprout | Minty Wellness",
+  title: "Sprout | Wellness Tracker",
   description: "A personalized, NoSQL-powered health and activity logger.",
 };
 
