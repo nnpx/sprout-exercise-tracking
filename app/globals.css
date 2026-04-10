@@ -1,33 +1,32 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-cream: #F0F4F1; 
-  --color-brand-mint: #c6d8c9;
+  --color-bg-main: #f8fafc; /* Slate 50 */
+  --color-text-main: #0f172a; /* Slate 900 */
+  --color-text-muted: #64748b; /* Slate 500 */
   
-  /* Changed from Teal to Dark Charcoal Gray */
-  --color-brand-teal: #122029; 
+  --color-primary: #4f46e5; /* Indigo 600 */
+  --color-primary-hover: #4338ca; /* Indigo 700 */
   
-  --color-brand-softTeal: #9aa89c;
-
-  --shadow-soft: 0 20px 40px -10px rgba(31, 41, 55, 0.08); /* Softened the shadow color to match the gray */
-  --shadow-inner-soft: inset 0 2px 4px 0 rgba(31, 41, 55, 0.05);
+  --color-border: #e2e8f0; /* Slate 200 */
+  
+  /* A very crisp, subtle drop shadow for a clean SaaS look */
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
 }
 
 :root {
-  background-color: var(--color-brand-cream);
-  color: var(--color-brand-teal);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-main);
   font-family: sans-serif; 
 }
 
 @layer components {
-  .glass-card {
-    /* Pure white background with slight transparency for the blur */
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(16px);
-    /* A crisp white border gives it that "glass" edge */
-    border: 1px solid rgba(255, 255, 255, 1);
-    box-shadow: var(--shadow-soft);
-    border-radius: 1.5rem; 
+  /* Renamed from glass-card to dashboard-card */
+  .dashboard-card {
+    background-color: #ffffff;
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-card);
+    border-radius: 0.75rem; /* xl rather than 3xl for sharper edges */
   }
 }
 
