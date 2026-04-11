@@ -33,44 +33,52 @@ export default async function Dashboard() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Metric 1 */}
-        <div className="dashboard-card p-6 flex flex-col justify-between">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-medium text-[var(--color-text-muted)]">Total Duration</h3>
-            <svg className="w-5 h-5 text-[var(--color-text-muted)] opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-          </div>
-          <div className="flex items-baseline gap-1">
-            <span className="text-3xl font-bold tracking-tight text-[var(--color-text-main)]">{stats.totalDuration}</span>
-            <span className="text-sm font-medium text-[var(--color-text-muted)]">mins</span>
-          </div>
-        </div>
-
-        {/* Metric 2 */}
-        <div className="dashboard-card p-6 flex flex-col justify-between">
-          <div className="flex justify-between items-center mb-4">
-            <h3 className="text-sm font-medium text-[var(--color-text-muted)]">Total Sessions</h3>
-            <svg className="w-5 h-5 text-[var(--color-text-muted)] opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
-          </div>
-          <div className="flex items-baseline gap-1">
-            <span className="text-3xl font-bold tracking-tight text-[var(--color-text-main)]">{stats.totalActivities}</span>
-            <span className="text-sm font-medium text-[var(--color-text-muted)]">sessions</span>
+        {/* Metric 1: Duration (Teal Accent) */}
+        <div className="dashboard-card p-6 flex flex-col justify-between border-t-4 border-t-teal-400">
+          <div className="relative z-10">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-sm font-semibold text-[var(--color-text-muted)]">Total Duration</h3>
+              <div className="p-1.5 bg-teal-50 text-teal-500 rounded-md">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-extrabold tracking-tight text-[var(--color-text-main)]">{stats.totalDuration}</span>
+              <span className="text-sm font-semibold text-[var(--color-text-muted)]">mins</span>
+            </div>
           </div>
         </div>
 
-        {/* Metric 3 */}
-        <div className="dashboard-card p-6 flex flex-col justify-between">
-          <h3 className="text-sm font-medium text-[var(--color-text-muted)] mb-4">Activity Split</h3>
-          <div className="space-y-3">
+        {/* Metric 2: Sessions (Indigo Accent) */}
+        <div className="dashboard-card p-6 flex flex-col justify-between border-t-4 border-t-indigo-400">
+          <div className="relative z-10">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-sm font-semibold text-[var(--color-text-muted)]">Total Sessions</h3>
+              <div className="p-1.5 bg-indigo-50 text-indigo-500 rounded-md">
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
+              </div>
+            </div>
+            <div className="flex items-baseline gap-1">
+              <span className="text-4xl font-extrabold tracking-tight text-[var(--color-text-main)]">{stats.totalActivities}</span>
+              <span className="text-sm font-semibold text-[var(--color-text-muted)]">sessions</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Metric 3: Split (Purple Accent) */}
+        <div className="dashboard-card p-6 flex flex-col justify-between border-t-4 border-t-purple-400">
+          <h3 className="text-sm font-semibold text-[var(--color-text-muted)] mb-4">Activity Split</h3>
+          <div className="space-y-3 relative z-10">
             {typeDistribution.length === 0 ? (
               <p className="text-sm text-[var(--color-text-muted)]">No data yet.</p>
             ) : (
               typeDistribution.map((type) => (
                 <div key={type._id} className="flex justify-between items-center text-sm">
-                  <span className="font-medium text-[var(--color-text-main)] flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-[var(--color-primary)]"></span>
+                  <span className="font-semibold text-[var(--color-text-main)] flex items-center gap-2">
+                    <span className={`w-2.5 h-2.5 rounded-full ${type._id === 'Running' ? 'bg-teal-400' : 'bg-purple-400'}`}></span>
                     {type._id}
                   </span>
-                  <span className="text-[var(--color-text-muted)] bg-slate-100 px-2 py-0.5 rounded text-xs font-medium">{type.count} logs</span>
+                  <span className="text-[var(--color-text-muted)] bg-slate-100 px-2 py-0.5 rounded text-xs font-semibold">{type.count} logs</span>
                 </div>
               ))
             )}
@@ -81,7 +89,7 @@ export default async function Dashboard() {
       <div>
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-lg font-bold text-[var(--color-text-main)]">Recent Activity</h2>
-          <Link href="/history" className="text-sm font-medium text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] transition-colors">
+          <Link href="/history" className="text-sm font-semibold text-indigo-600 hover:text-indigo-800 transition-colors">
             View All →
           </Link>
         </div>
@@ -93,9 +101,9 @@ export default async function Dashboard() {
             ))}
           </div>
         ) : (
-          <div className="dashboard-card p-12 text-center border-dashed">
+          <div className="dashboard-card p-12 text-center border-dashed border-2">
             <p className="text-sm text-[var(--color-text-muted)] mb-4">No activities logged yet.</p>
-            <Link href="/log" className="bg-[var(--color-primary)] text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-[var(--color-primary-hover)] transition-colors">
+            <Link href="/log" className="bg-indigo-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold hover:bg-indigo-700 transition-colors">
               Add Activity
             </Link>
           </div>

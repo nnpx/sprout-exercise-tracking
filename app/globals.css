@@ -4,14 +4,9 @@
   --color-bg-main: #f8fafc; /* Slate 50 */
   --color-text-main: #0f172a; /* Slate 900 */
   --color-text-muted: #64748b; /* Slate 500 */
-  
-  --color-primary: #4f46e5; /* Indigo 600 */
-  --color-primary-hover: #4338ca; /* Indigo 700 */
-  
   --color-border: #e2e8f0; /* Slate 200 */
   
-  /* A very crisp, subtle drop shadow for a clean SaaS look */
-  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.025);
 }
 
 :root {
@@ -21,12 +16,13 @@
 }
 
 @layer components {
-  /* Renamed from glass-card to dashboard-card */
   .dashboard-card {
     background-color: #ffffff;
     border: 1px solid var(--color-border);
     box-shadow: var(--shadow-card);
-    border-radius: 0.75rem; /* xl rather than 3xl for sharper edges */
+    border-radius: 0.75rem; 
+    position: relative; /* Needed for the background SVGs */
+    overflow: hidden; /* Keeps the SVGs inside the card */
   }
 }
 

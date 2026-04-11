@@ -9,7 +9,7 @@ export async function DELETE(
 ) {
     try {
         await dbConnect();
-        const resolvedParams = await params; // <-- Unwrap the promise here
+        const resolvedParams = await params; // Unwrap the promise here
 
         const deletedActivity = await Activity.findByIdAndDelete(resolvedParams.id);
         if (!deletedActivity) return NextResponse.json({ error: 'Not found' }, { status: 404 });
@@ -26,7 +26,7 @@ export async function GET(
 ) {
     try {
         await dbConnect();
-        const resolvedParams = await params; // <-- Unwrap the promise here
+        const resolvedParams = await params; // Unwrap the promise here
 
         const activity = await Activity.findById(resolvedParams.id);
 
@@ -44,7 +44,7 @@ export async function PUT(
 ) {
     try {
         await dbConnect();
-        const resolvedParams = await params; // <-- Unwrap the promise here
+        const resolvedParams = await params; // Unwrap the promise here
 
         const body = await request.json();
         const updatedActivity = await Activity.findByIdAndUpdate(resolvedParams.id, body, {

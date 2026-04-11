@@ -18,7 +18,7 @@ const ActivitySchema: Schema = new Schema(
         activityType: {
             type: String,
             required: true,
-            enum: ['Running', 'Weightlifting', 'Yoga', 'Meditation']
+            enum: ['Running', 'Weightlifting']
         },
         date: {
             type: Date,
@@ -40,8 +40,7 @@ const ActivitySchema: Schema = new Schema(
     { timestamps: true }
 );
 
-// This checks if the model already exists to prevent Next.js from recompiling 
-// it every time you save a file during development.
+// This checks if the model already exists to prevent Next.js from recompiling it every time you save a file during development.
 const Activity = mongoose.models.Activity || mongoose.model<IActivity>('Activity', ActivitySchema);
 
 export default Activity;

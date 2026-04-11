@@ -58,22 +58,22 @@ export default function LogActivity() {
         }
     };
 
-    const inputClass = "w-full px-3 py-2 text-sm rounded-md border border-[var(--color-border)] bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-[var(--color-primary)] focus:border-transparent transition-all";
-    const labelClass = "block text-xs font-semibold text-[var(--color-text-main)] mb-1";
+    const inputClass = "px-3 py-2.5 text-sm rounded-md border border-[var(--color-border)] bg-white shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all";
+    const labelClass = "block text-xs font-semibold text-[var(--color-text-main)] mb-1.5";
 
     return (
         <div className="max-w-xl mx-auto py-8">
-            <div className="dashboard-card p-6 md:p-8">
-                <h1 className="text-xl font-bold mb-6 text-[var(--color-text-main)]">Add New Activity</h1>
+            <div className="dashboard-card border-t-4 border-t-indigo-500 p-6 md:p-8">
+                <h1 className="text-2xl font-bold mb-6 text-[var(--color-text-main)] tracking-tight">Add New Activity</h1>
 
                 {message && (
-                    <div className="mb-6 px-4 py-3 rounded-md bg-indigo-50 text-[var(--color-primary)] text-sm font-medium border border-indigo-100">
+                    <div className="mb-6 px-4 py-3 rounded-md bg-teal-50 text-teal-700 text-sm font-semibold border border-teal-100">
                         {message}
                     </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-2 gap-5">
                         <div>
                             <label className={labelClass}>Type</label>
                             <select value={activityType} onChange={(e) => setActivityType(e.target.value)} className={inputClass}>
@@ -90,7 +90,7 @@ export default function LogActivity() {
                     <hr className="border-[var(--color-border)]" />
 
                     {activityType === 'Running' && (
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-5">
                             <div>
                                 <label className={labelClass}>Distance (km)</label>
                                 <input type="number" step="0.1" required value={distanceKm} onChange={(e) => setDistanceKm(e.target.value)} className={inputClass} placeholder="5.0" />
@@ -103,29 +103,31 @@ export default function LogActivity() {
                     )}
 
                     {activityType === 'Weightlifting' && (
-                        <div className="space-y-4">
+                        <div className="space-y-5">
                             <div>
                                 <label className={labelClass}>Focus Area</label>
                                 <input type="text" required value={focus} onChange={(e) => setFocus(e.target.value)} className={inputClass} placeholder="e.g. Upper Body" />
                             </div>
 
-                            <div className="space-y-2">
+                            <div className="space-y-3">
                                 <label className={labelClass}>Sets</label>
                                 {sets.map((set, index) => (
-                                    <div key={index} className="flex gap-2">
+                                    <div key={index} className="flex gap-3 items-center">
                                         <input type="text" placeholder="Exercise" required value={set.exercise} onChange={(e) => handleSetChange(index, 'exercise', e.target.value)} className={`${inputClass} flex-1`} />
                                         <input type="number" placeholder="Kg" required value={set.weightKg} onChange={(e) => handleSetChange(index, 'weightKg', e.target.value)} className={`${inputClass} w-20`} />
                                         <input type="number" placeholder="Reps" required value={set.reps} onChange={(e) => handleSetChange(index, 'reps', e.target.value)} className={`${inputClass} w-20`} />
                                     </div>
                                 ))}
-                                <button type="button" onClick={() => setSets([...sets, { exercise: '', weightKg: '', reps: '' }])} className="text-xs font-medium text-[var(--color-primary)] mt-1 hover:underline">
+
+
+                                <button type="button" onClick={() => setSets([...sets, { exercise: '', weightKg: '', reps: '' }])} className="text-xs font-semibold text-indigo-600 mt-1 hover:text-indigo-800 transition-colors">
                                     + Add Set
                                 </button>
                             </div>
                         </div>
                     )}
 
-                    <button type="submit" disabled={isSubmitting} className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-sm font-semibold py-2.5 rounded-md transition-colors disabled:opacity-50">
+                    <button type="submit" disabled={isSubmitting} className="w-full bg-indigo-600 hover:bg-indigo-700 text-white text-sm font-semibold py-3 rounded-lg shadow-sm transition-colors disabled:opacity-50">
                         {isSubmitting ? 'Saving...' : 'Save Activity'}
                     </button>
                 </form>
